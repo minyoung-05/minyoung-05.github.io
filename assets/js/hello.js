@@ -1,4 +1,3 @@
-// assets/js/hello.js
 const author = "김민영";
 const major = "영어영문학 전공";
 const year = 2026;
