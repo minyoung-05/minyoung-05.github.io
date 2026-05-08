@@ -30,7 +30,7 @@ console.log(works[works.length - 1]); // 마지막 항목
 const titled = works.map(work => `「${work}」`);
 console.log(titled);
 
-const long = works.filter(w => w.length >= 2);
+const long = works.filter(w => w.length >= 3);
 console.log(long);
 
 for (let i = 0; i < works.length; i++) {
@@ -62,7 +62,7 @@ for (let i = 0; i < targets.length; i++) {
     console.log(`'${targets[i]}': ${counts[i]}번`);
 }
 
-const frequent = targets.filter(t => countChar(text, t) >= 3);
+const frequent = targets.filter(t => countChar(text, t) >= 2);
 console.log(frequent);
 
 let maxIdx = 0;
