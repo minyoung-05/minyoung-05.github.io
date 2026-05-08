@@ -33,8 +33,8 @@ console.log(titled);
 const long = works.filter(w => w.length >= 3);
 console.log(long);
 
-for (let i = 0; i < works.length; i++) {
-    console.log(`${i + 1}번째 작품: ${works[i]}`);
+for (let i = 0; i < long.length; i++) {
+    console.log(`${i + 1}번째 작품: ${long[i]}`);
 }
 
 //Q3
@@ -47,9 +47,13 @@ function countChar(text, target) {
     return count;
 }
 
-console.log(countChar ("박씨는 이씨에게 시집간 김씨의 외사촌 동생이다.", "씨")) //3
-console.log(countChar("이상의 「날개」는 1936년 작품이다.", "이")) //2
-console.log(countChar("banana", "a")) //3
+const text1 = "박씨는 이씨에게 시집간 김씨의 외사촌 동생이다.";
+const text2 = "이상의 「날개」는 1936년 작품이다.";
+const text3 = "banana"
+console.log(`"${text1}"에서 '씨'는 ${countChar(text1, "씨")}번 등장합니다.`)
+console.log(`"${text2}"에서 '이'는 ${countChar(text2, "이")}번 등장합니다.`)
+console.log(`"${text3}"에서 'a'는 ${countChar(text3, "a")}번 등장합니다.`)
+
 
 //Q4
 const text = "이상의 「날개」는 1936년에 발표된 단편소설이다.";
