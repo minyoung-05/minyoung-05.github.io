@@ -16,26 +16,23 @@ function classifyEra(year) {
 
 const years = [1908, 1936, 1972, 2025];
 for (year of years) {
-    console.log(`${year}년: ${classifyEra(year)}1`)
+    console.log(`${year}년: ${classifyEra(year)}`)
 }
 
 // Q2
-  // 1
+
 const works = ["날개", "오감도", "지주회시", "종생기", "권태"]
 
 console.log(works.length); // 길이
 console.log(works[0]); // 첫 번째
 console.log(works[works.length - 1]); // 마지막 항목
 
-  // 2
 const titled = works.map(work => `「${work}」`);
 console.log(titled);
 
-  //3
 const long = works.filter(w => w.length >= 2);
 console.log(long);
 
-  //4
 for (let i = 0; i < works.length; i++) {
     console.log(`${i + 1}번째 작품: ${works[i]}`);
 }
