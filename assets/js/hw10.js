@@ -27,7 +27,7 @@ console.log(works.length); // 길이
 console.log(works[0]); // 첫 번째
 console.log(works[works.length - 1]); // 마지막 항목
 
-const titled = works.map(work => `"「${work}」"`);
+const titled = works.map(work => `「${work}」`);
 console.log(titled);
 
 const long = works.filter(w => w.length >= 3);
