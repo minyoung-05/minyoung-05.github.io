@@ -62,7 +62,7 @@ for (let i = 0; i < targets.length; i++) {
     console.log(`'${targets[i]}': ${counts[i]}번`);
 }
 
-const frequent = targets.filter(t => countChar(text, t) >= 2);
+const frequent = targets.filter(t => countChar(text, t) >= 3);
 console.log(frequent);
 
 let maxIdx = 0;
