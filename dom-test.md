@@ -10,7 +10,7 @@ permalink: /dom-test/
 <h2>글자 빈도</h2>
 <ul id="freq-list"></ul> 
 <!-- JavaScript로 채울 부분-->
-<p id="top-char”></p>
+<p id="top-char"></p>
 
 <!-- 글자 빈도를 계산해서 채워 넣을 코드 -->
 <script src="/assets/js/dom-freq.js"></script>
