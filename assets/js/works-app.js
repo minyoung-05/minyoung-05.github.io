@@ -25,6 +25,26 @@ fetch("/data/works.json")
     }
 });
 
+function drawList(targets, counts) {
+    list.textContent = ""; // 기존 목록 비우기
+    for (let i = 0; i < targets.length; i++) {
+        const li = document.createElement("li");
+        li.textContent = `'${targets[i]}': ${counts[i]}번`;
+        list.appendChild(li);
+    }
+}
+
+function drawTop(targets, counts) {
+    let maxIdx = 0;
+    for (let i = 1; i < counts.length; i++) {
+        if (counts[i] > counts[maxIdx]) maxIdx = i;
+    }
+    topBox.textContent = `가장 자주 나온 글자: ${targets[maxIdx]} (${counts[maxIdx]}번)`;
+    topBox.style.fontWeight = "bold"
+    topBox.style.color = "crimson";
+}
+
+
 function analyze(work) {
     fetch(work.file)
     .then(response => response.text())
