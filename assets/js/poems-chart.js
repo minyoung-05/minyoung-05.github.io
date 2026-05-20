@@ -1,0 +1,31 @@
+fetch("/data/poems.csv")
+    .then(response => response.text())
+    .then(csv => {
+        const data = csv
+            .split("\n")
+            .slice(1)
+            .filter(line => line.trim() !== "")
+            .map(line => {
+                const cols = line.split(",");
+                return {
+                    year: Number(cols[0]),
+                    author: cols[1].trim(),
+                    count: Number(cols[2]),
+                };
+            });
+        drawChart(data); // <-- 오늘 추가하는 부분
+    });
+
+function drawChart(rows) {
+    const labels = rows.map(r => r.author); // [”김소월”, ”이상”, ...]
+    const counts = rows.map(r => r.count); // [127, 42, 18, 89]
+
+    const canvas = document.querySelector("#poems-chart");
+    new Chart(canvas, {
+        type: "bar", 
+        data: {
+            labels: labels, 
+            datasets: [{ label: "작품 편수", data: counts }],
+        },
+    });
+}
