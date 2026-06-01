@@ -69,7 +69,7 @@ Promise.all([
 
 function drawChart(selector, top,color) {
     const canvas = document.querySelector(selector);
-    return new CharacterData(canvas, {
+    return new Chart(canvas, {
         type: "bar",
         data: {
             labels: top.map(item => item[0]),
