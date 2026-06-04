@@ -3,7 +3,6 @@
 
 //Q1
 // --- 함수 정의들 (21강 코드 재사용) ---
-// 1. Gutenburg 텍스트 파일에서 본문만 가져오기
 function extractBody(text) {
     const startMark = "*** START OF THE PROJECT GUTENBERG EBOOK";
     const endMark   = "*** END OF THE PROJECT GUTENBERG EBOOK";
@@ -15,7 +14,6 @@ function extractBody(text) {
     return text.slice(startIdx, endIdx);
 }
 
-//2. 가져온 본문에서 단어들의 배열을 얻기
 function getWords(text) {
     return text
         .toLowerCase()
@@ -24,12 +22,10 @@ function getWords(text) {
         .filter(w => w.length > 0);
 }
 
-//3. 단어들의 배열에서 불용어 제거하기
 function removeStopwords(words, stopwords) {
     return words.filter(w => !stopwords.includes(w));
 }
 
-//4. 단어들의 배열을 {단어: 빈도} 꼴의 객체로 만들기
 function countWords(words) {     //words: 단어들의 배열
     const counts = {};   //빈 객체 초기화
     for (const word of words) {
@@ -38,23 +34,12 @@ function countWords(words) {     //words: 단어들의 배열
     return counts;
 }
 
-//5. {단어: 빈도} 객체에서 상위 n개의 배열 얻기
 function topN(counts, n) {
     return Object.entries(counts)
         .sort((a, b) => b[1] - a[1])
         .slice(0, n);
 }
 
-//종합: text --> 상위 n개 단어의 배열
-function analyze(text, stopwords) {
-    const body = extractBody(text);
-    const words = getWords(body);
-    const cleaned = removeStopwords(words, stopwords);
-    const counts = countWords(cleaned);
-    return topN(counts, 30);
-}
-
-// 차트 그리는 함수
 function drawChart(selector, top, color) {
     const canvas = document.querySelector(selector);
     new Chart(canvas, {
@@ -76,6 +61,17 @@ function drawChart(selector, top, color) {
         },
     });
 }
+
+function analyze(text, stopwords) {
+    const body = extractBody(text);
+    const words = getWords(body);
+    const cleaned = removeStopwords(words, stopwords);
+    const counts = countWords(cleaned);
+    return topN(counts, 30);
+}
+
+const frankTop = analyze(frankText, stopwords);
+const dracTop = analyze(dracText, stopwords);
 
 // --- 메인: 세 파일을 동시에 fetch ---
 Promise.all([
