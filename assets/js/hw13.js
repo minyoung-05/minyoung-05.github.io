@@ -1,6 +1,7 @@
 // [숙제13] 텍스트 분석 도구 구현
 // 2024-17603 김민영
 
+//Q1
 // --- 함수 정의들 (21강 코드 재사용) ---
 // 1. Gutenburg 텍스트 파일에서 본문만 가져오기
 function extractBody(text) {
@@ -81,8 +82,12 @@ Promise.all([
     fetch("/data/frankenstein.txt").then(r => r.text()),
     fetch("/data/dracula.txt").then(r => r.text()),
     fetch("/data/stopwords-en.txt").then(r => r.text()),
-]).then(([frankText, dracText, stopText]) => {
-    const stopwords = stopText.split(/\s+/).filter(w => w.length > 0);
+    fetch("/data/stopwords-custom.txt").then(r => r.text()),
+]).then(([frankText, dracText, baseStop, customStop]) => {
+    const stopwords = (baseStop + "\n"+ customStop) 
+    .split(/\s+/)
+    .filter(w => w.length > 0);
+
     const frankTop = analyze(frankText, stopwords);
     const dracTop = analyze(dracText, stopwords);
     drawChart("#chart-frankenstein", frankTop,
