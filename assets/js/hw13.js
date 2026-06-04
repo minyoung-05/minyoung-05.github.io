@@ -70,9 +70,6 @@ function analyze(text, stopwords) {
     return topN(counts, 30);
 }
 
-const frankTop = analyze(frankText, stopwords);
-const dracTop = analyze(dracText, stopwords);
-
 // --- 메인: 세 파일을 동시에 fetch ---
 Promise.all([
     fetch("/data/frankenstein.txt").then(r => r.text()),
