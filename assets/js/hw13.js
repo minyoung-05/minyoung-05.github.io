@@ -2,7 +2,8 @@
 // 2024-17603 김민영
 
 // --- 함수 정의들 (21강 코드 재사용) ---
-//1. Gutenburg 텍스트 파일에서 본문만 가져오기
+// 1. Gutenburg 텍스트 파일에서 본문만 가져오기
+console.log("hw13 loaded")
 function extractBody(text) {
     const startMark = "*** START OF THE PROJECT GUTENBERG EBOOK";
     const endMark   = "*** END OF THE PROJECT GUTENBERG EBOOK";
