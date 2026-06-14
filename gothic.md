@@ -1,6 +1,6 @@
 ---
 layout: page
-title: [숙제13] 텍스트 분석 도구 구현
+title: 텍스트 분석 도구 구현
 permalink: /gothic/
 ---
 # [숙제13] 텍스트 분석 도구 구현
