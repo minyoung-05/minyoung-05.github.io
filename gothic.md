@@ -1,7 +1,7 @@
 ---
 layout: page
 title: [숙제13] 텍스트 분석 도구 구현
-permalink: /hw13/
+permalink: /gothic/
 ---
 # [숙제13] 텍스트 분석 도구 구현
 <!-- Q1: 두 고딕 소설의 상위 30개 단어 비교 -->
@@ -40,5 +40,7 @@ NLTK 기본 목록 외에 다음 7개의 단어를 'data/stopwrods-custom.txt'�
 
 Frankenstein에서는 eyes, mind, hear, feelings와 같이 감각과 감정 관련 단어가 많이 등장한다. 이는 해당 소설에서 인물의 감각적 경험이 심리적으로 어떻게 연결되는지에 대한 묘사가 많음을 드러낸다. 반면, Dracula에서는 사람 이름이 많이 등장한다. 이는 해당 소설이 다양한 인물들을 다루고 있다는 점을 드러낸다. 
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="/assets/js/hw13.js"></script>
+
+{% include chartjs.html %}
+<script src="/assets/js/analysis.js"></script>
+<script src="/assets/js/gothic.js"></script>

@@ -14,54 +14,6 @@ function extractBody(text) {
     return text.slice(startIdx, endIdx);
 }
 
-function getWords(text) {
-    return text
-        .toLowerCase()
-        .replace(/[.,!?;:'"‘’“”()\[\]_*]/g, " ")
-        .split(/\s+/)
-        .filter(w => w.length > 0);
-}
-
-function removeStopwords(words, stopwords) {
-    return words.filter(w => !stopwords.includes(w));
-}
-
-function countWords(words) {     //words: 단어들의 배열
-    const counts = {};   //빈 객체 초기화
-    for (const word of words) {
-        counts[word] = (counts[word] || 0) + 1;
-    }
-    return counts;
-}
-
-function topN(counts, n) {
-    return Object.entries(counts)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, n);
-}
-
-function drawChart(selector, top, color) {
-    const canvas = document.querySelector(selector);
-    new Chart(canvas, {
-        type: "bar",
-        data: {
-            labels: top.map(item => item[0]),
-            datasets: [{
-                label: "빈도", data: top.map(item => item[1]),
-                backgroundColor: color,
-            }],
-        },
-        options: {
-            indexAxis: "y", // 가로 막대
-            maintainAspectRatio: false, // 부모 <div> height에 맞춤
-            scales: {
-                x: { beginAtZero: true },
-                y: { ticks: { autoSkip: false } }, // 라벨 30개 전부
-            },
-        },
-    });
-}
-
 function analyze(text, stopwords) {
     const body = extractBody(text);
     const words = getWords(body);
@@ -70,7 +22,6 @@ function analyze(text, stopwords) {
     return topN(counts, 30);
 }
 
-// --- 메인: 세 파일을 동시에 fetch ---
 Promise.all([
     fetch("/data/frankenstein.txt").then(r => r.text()),
     fetch("/data/dracula.txt").then(r => r.text()),
